@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
+import "Task.proto";
+import "CoordinatorJob.proto";
+
+
+option java_package = "com.com.thoughtworks.bigdata.dataworkflow.proto.service";
+
+message JobStage {
+  repeated Task tasks = 1;
+}
+
+message GetDependenciesResponse {
+  repeated JobStage stages = 1;
+}
+
+message GetDependenciesRequest {
+  int32 jobId = 1;
+  string taskId = 2;
+}
+
+message GetJobsResponse {
+  repeated int32 jobId = 1;
+}
+
+service ApplicationManagerService {
+
+  rpc getJob(google.protobuf.Int32Value) returns (CoordinatorJob) {};
+
+  rpc startJob(google.protobuf.Int32Value) returns (google.protobuf.Empty) {};
+
+  rpc registerJob(CoordinatorJob) returns (google.protobuf.Empty) {};
+
+  rpc getTask(google.protobuf.Empty) returns (Task) {};
+
+  rpc updateTaskStatus(Task) returns (google.protobuf.Empty) {};
+
+  rpc getJobs(google.protobuf.Empty) returns (GetJobsResponse) {};
+
+  rpc getDependencies(GetDependenciesRequest) returns (GetDependenciesResponse) {};
+}

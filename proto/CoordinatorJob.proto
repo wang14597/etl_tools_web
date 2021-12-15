@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+import "Task.proto";
+option java_package = "com.com.thoughtworks.bigdata.dataworkflow.proto.model";
+
+message NestedTask {
+  repeated Task tasks = 1;
+}
+message CoordinatorJob {
+  int32 jobId = 1;
+  int32 remainingJob = 2;
+  string jobStatus = 3;
+  repeated Task tasks = 4;
+}

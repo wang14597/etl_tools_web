@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option java_package = "com.com.thoughtworks.bigdata.dataworkflow.proto.model";
+
+message Step {
+  string stepName = 1;
+  string dependencies = 2;
+  string action = 3;
+  map<string, string> params = 4;
+}

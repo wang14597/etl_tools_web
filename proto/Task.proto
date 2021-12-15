@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+import "Step.proto";
+
+option java_package = "com.com.thoughtworks.bigdata.dataworkflow.proto.model";
+message Task {
+  int32 job = 1;
+  string taskStatus = 2;
+  string taskId = 3;
+  Step step = 4;
+  string stepName = 5;
+  string dependencies = 6;
+  string action = 7;
+}
