@@ -1,4 +1,8 @@
 import os
 import sys
-sys.path.append(os.path.join(os.getcwd(), 'app'))
-sys.path.append(os.path.join(os.getcwd(), 'proto_py'))
+
+getcwd_ = os.getcwd()
+listdir = os.listdir(getcwd_)
+for i in listdir:
+    sys.path.append(os.path.join(getcwd_, i))
+
